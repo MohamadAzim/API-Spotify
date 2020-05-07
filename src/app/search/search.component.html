@@ -1,0 +1,28 @@
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><div
+  class="card text-white bg-secondary mb-3"
+  style="max-width: 60rem;margin: auto;"
+>
+  <div class="alert alert-dismissible alert-primary" style="text-align:center;"><h1 class="title">Need Music?</h1></div>
+  <div class="card-body" style="text-align:center;">
+    <h3>
+      <small class="text-muted">Search your favourite song and artist with IGNITE SPOTIFY</small>
+    </h3>
+    <form>
+      <div class="form-group">
+        <label class="col-form-label" for="inputDefault">Default input</label>
+        <input type="text" class="form-control" placeholder="Default input" id="inputDefault"
+        [(ngModel)]="searchStr"
+        placeholder="Search Your Favourite Artist Name"
+        (keyup)="searchTerm$.next()"
+        [ngModelOptions]="{ standalone: true }">
+        
+      </div>
+    </form>
+    <div *ngFor="let item of resultItems">
+      <app-result-box
+        [musicData]="item"
+        (viewMusicDetails)="listenForDetails($event)"
+      ></app-result-box>
+    </div>
+  </div>
+</div>
